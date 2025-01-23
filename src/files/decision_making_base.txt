@@ -1,0 +1,28 @@
+{
+  "figure": "decision_making",
+  "inputs": [
+    
+    
+  ],
+  "output": {
+    "value": ,
+    "linguistic_expressions": [
+     
+    ],
+    "validity_degrees": [
+     
+    ]
+  },
+  "aggregation_function": {
+    "type": "",
+    "details": {
+     
+    },
+    "universe": [
+      
+    ],
+    "fuzzy_sets": [
+    ]
+  },
+  "template": ""
+}

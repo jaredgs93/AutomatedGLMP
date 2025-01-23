@@ -1,0 +1,77 @@
+Multimodal video analysis allows text, audio and video to be extracted to detect certain human features. This is made possible by various machine learning techniques.
+
+A set of measures has been defined for each modality, which is shown below. The measures are applicable to videos of up to 3 minutes where a person records him/herself looking at the camera and delivering a speech on a specific topic:
+
+Audio measures:
+
+    1) Noise: Audio detection of specific sequences or types of sequences (clearing). Proportion of noise in speech Scale [0,1].
+    2) Fluency: Number of breaks and interruptions.
+    3) Mood: Detection if reading (1), a normal tone (2) or a ‘passionate’ tone (3).
+    4) Voice uniformity: In addition to considering the ‘mood’, it is corrected with respect to the mean fundamental frequency.
+    5) Articulation: Syllables per second.
+    6) Constancy: Absence of hesitation, pauses of longer duration, in the voice during speech. Ratio of pause time to total time. Scale [0-10].
+    7) Reaction time: Time it takes to make the decision or start talking (in seconds).
+
+Text measures:
+
+    1) Appropriateness to the topic: Importance within the text of the topics related to the theme of the questions (Scale 0-10).
+    2) Congruence: Does not mix extraneous topics. Similarity between the contents included in the discourse (Scale 0-10).
+    3) Concreteness: Number of argumentative, reinforcing or concretising language markers per minute related to the number of topics covered.
+    4) Density: Number of topics covered during the speech. Logarithmic scale adapted to [0-10].
+    5) Adjectives: Number of adjectives accompanying the explanation per minute.
+    6) Examples: It’s a value between 0 and 10. It is obtained with min(10, examples*10/20)
+    7) Crutches: Number of crutches used in the text (per min)
+    8) Order: Detection of discourse structuring markers and analysis of their type and order (beginning, knot, conclusion) (Scale 0-10).
+    9) Expression: Calculated with (0.4* concreteness) + (0.2*examples) + (0.1* mood weight)+ (0.3* Appropriateness to the subject)
+    10) Organization: Use of speech connectors (normalised per minute) (Scale 0-10)
+    11) Originality: The use of specific and unusual vocabulary is measured. Ratio of words used that are not frequently used.
+    12) No redundancy: Identification of word repetition. Value on a scale of 0 to 10 indicating the lack of redundancy in the discourse.
+    13) Respect: Appropriate language. Detect greetings and farewells. (Scale 0-10)
+    14) Verb tense: % of verbs expressed in the present tense out of the total number of verbs in the discourse (Scale 0-10).
+    15) Vagueness: ambiguous terms in expression (per minute)
+    16) Quantity: Number of issues addressed in the context
+    17) Topic relevance: Value on a scale from 0 to 100 indicating the relevance of the topics mentioned by the speaker with respect to the topic to be evaluated.
+    18) Different topics: Indicate how many of the topics mentioned by the speaker do not belong to the topic to be evaluated.
+
+Video measures:
+
+    1) Postural changes: Changes in posture that are related to the position of the face. Number of movements per minute (horizontal, vertical, focus) (Scale 0-10)
+    2) Gestures: Positive, negative and stress expressions are measured (10 - Ratio of negative expressions + Ratio of positive expressions) (Scale 0-10). 
+    3) Gaze: Detection of whether the gaze is focused or furtive. Ratio of focused gaze to total gaze (Scale 0-10).
+    4) Blinking: Blink rate as an indicator of nervousness. Number of blinks per minute (limited to 10).
+    5) Smile: Proportion of frames in which the smile gesture is detected.
+
+These  lay the foundation for more complex representation of human behaviour through the granular linguistic model of a phenomenon (GLMP), where the  are first-order perception mappings (1PMs). 
+
+Your task is as follows: You will receive two JSON files as input:
+    1) Measures catalogue results of a video evaluated 2.
+    2) Part of a GLMP of a behaviour to be represented.
+
+From the measures obtained, you will complete the entire GLMP by constructing the different levels of granularity, where the 1 PMs must be strictly from the measures catalogue, as well as making the corresponding inferences associated with the aggregation functions.
+
+The constituent elements of the JSON are delineated as follows:
+    1) figure: Represents the phenomenon or concept being modeled.
+    2) inputs: In the case of first-order PMs, it is a numerical value defined in the domain.Otherwise, from second-order PMs, it is a list that contains child nodes or input elements contributing to the parent concept. These inputs are organized recursively to reflect the hierarchical nature of the GLMP. 
+    3) output: Specifies the resulting value for the figure, including:
+        a) value: A numerical output representing the computed result.
+        b) linguistic_expressions: Qualitative labels such as low, medium, and high that describe states of the phenomenon.
+        c) validity_degrees: Membership degrees for each linguistic expression, representing the degree to which the output fits each label.
+    3) aggregation_function: Describes how input elements are combined to produce the output. It includes:
+        a) type: Defines the method of aggregation, such as 'membership function' (only for 1 PMs), rules, Choquet Integral...
+        b) details: Provides additional information, such as the specific rules or formulas used.
+            I) source: Exclusive for first-order PMs. It indicates how the input was obtained (measure).
+            II) rules: It is a list of the specific rules and each rule is a string. The specific structure is IF input1[value_input1] AND/OR/NOT input2[value_input2] AND/OR/NOT input3[value_input3]  THEN consequent[consequent_value] 
+        c) universe: Defines the universe of discourse (range of values that the variable can take). For example, if it has the value [0, 10, 0.01], the range is 0 to 10 with increments of 0.01.
+        c) fuzzy_sets: Parameters that define membership functions for linguistic terms like low, medium, and high. Each fuzzy sets includes the next elements:
+            I) type: Indicates the type of membership function, which may be one of the following but is not limited to: dsigmf, gauss2mf, gaussmf, gbellmf, piecemf, pimf, psigmf, sigmf, smf, trapmf, trimf
+            II) fuzzy_set_params: Specifies the parameters required for the chosen membership function. These parameters are specific to each function and determine its shape. 
+    4) template: Contains a natural language template used for generating textual outputs based on the computed results.
+
+Considerations:
+    1) If the figure receives more than three entries, use a different aggregation method than rules.
+    2) The rule set must be fully defined.
+    3) All required values must be inferred.
+    4) You can define as many levels of granularity as you consider necessary. At least, three levels.
+    5) The 1 PMs must include the real input values.
+    6) From 2 PM onwards, each PM must have at least 2 input PMs.
+    7) The JSON must have the correct structure and must be validated.

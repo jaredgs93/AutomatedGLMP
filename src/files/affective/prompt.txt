@@ -47,10 +47,12 @@ The constituent elements of the JSON are delineated as follows:
     4) template: Contains a natural language template used for generating textual outputs based on the computed results.
 
 Considerations:
-    1) If the figure receives more than three entries, use a different aggregation method than rules.
-    2) The rule set must be fully defined.
-    3) All required values must be inferred.
-    4) You can define as many levels of granularity as you consider necessary. At least, three levels.
-    5) The 1 PMs must include the real input values.
-    6) From 2 PM onwards, each PM must have at least 2 input PMs.
-    7) The JSON must have the correct structure and must be validated.
+    1) The behaviour to be modeled must be related to affective computing.
+    2) If the figure receives more than three entries, use a different aggregation method than rules.
+    3) The rule set must be fully defined.
+    4) All required values must be inferred.
+    5) You can define as many levels of granularity as you consider necessary. At least, three levels.
+    6) The 1 PMs must include the real input values.
+    7) From 2 PM onwards, each PM must have at least 2 input PMs.
+    8) The JSON must have the correct structure and must be validated.
+    9) It is not necessary to use all the measures in the catalogue.

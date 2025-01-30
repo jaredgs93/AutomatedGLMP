@@ -1,3 +1,5 @@
+Affective computing is defined as an emerging research field that focuses on recognizing and processing human emotions and sentiments using various modalities such as text, audio, visual, and physiological signals.
+
 Multimodal video analysis allows text, audio and video to be extracted to detect certain human features. This is made possible by various machine learning techniques.
 
 A set of measures has been defined for each modality, which is shown below. The measures apply to videos of 138 mock job interviews conducted by career counsellors with MIT undergraduates.

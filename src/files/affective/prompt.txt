@@ -25,7 +25,12 @@ Your task is as follows: You will receive one JSON files as input which includes
 
 The constituent elements of the JSON are delineated as follows:
     1) figure: Represents the phenomenon or concept being modeled.
-    2) inputs: In the case of first-order PMs, it is a numerical value defined in the domain.Otherwise, from second-order PMs, it is a list that contains child nodes or input elements contributing to the parent concept. These inputs are organized recursively to reflect the hierarchical nature of the GLMP. 
+    2) inputs: In the case of first-order PMs, it is a numerical value defined in the domain, and follows the next structure:
+        "inputs": [
+                {
+                  "value": {numeric value based on the measures catalogue}
+                }]
+        Otherwise, from second-order PMs, it is a list that contains child nodes or input elements contributing to the parent concept. These inputs are organized recursively to reflect the hierarchical nature of the GLMP. 
     3) output: Specifies the resulting value for the figure, including:
         a) value: A numerical output representing the computed result.
         b) linguistic_expressions: Qualitative labels such as low, medium, and high that describe states of the phenomenon.

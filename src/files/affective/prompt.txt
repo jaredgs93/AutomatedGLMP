@@ -23,7 +23,7 @@ A set of measures has been defined for each modality, which is shown below. The 
 
 All metrics are on the 0-7 scale. These  lay the foundation for more complex representation of human behaviour through the granular linguistic model of a phenomenon (GLMP), where the  are first-order perception mappings (1PMs). 
 
-Your task is as follows: You will receive one JSON files as input which includes the measures catalogue results of a video evaluated. From the measures obtained, you will build the entire GLMP by constructing the different levels of granularity, where the 1 PMs must be strictly from the measures catalogue, as well as making the corresponding inferences associated with the aggregation functions. The GLMP must represent a specific behaviour related with affective computing.
+Your task is as follows: You will receive one JSON files as input which includes the measures catalogue results of a video evaluated. From the measures obtained, you will build the entire GLMP by constructing the different levels of granularity, where the 1 PMs must be strictly from the measures catalogue, as well as making the corresponding inferences associated with the aggregation functions. The GLMP must represent a specific human emotion/sentiment related with affective computing.
 
 The constituent elements of the JSON are delineated as follows:
     1) figure: Represents the phenomenon or concept being modeled.
@@ -49,7 +49,7 @@ The constituent elements of the JSON are delineated as follows:
     4) template: Contains a natural language template used for generating textual outputs based on the computed results.
 
 Considerations:
-    1) The behaviour to be modeled must be related to affective computing.
+    1) The emotion/sentiment to be modeled must be related to affective computing.
     2) If the figure receives more than three entries, use a different aggregation method than rules.
     3) The rule set must be fully defined.
     4) All required values must be inferred.

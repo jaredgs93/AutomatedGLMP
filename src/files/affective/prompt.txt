@@ -1,0 +1,51 @@
+Multimodal video analysis allows text, audio and video to be extracted to detect certain human features. This is made possible by various machine learning techniques.
+
+A set of measures has been defined for each modality, which is shown below. The measures apply to videos of 138 mock job interviews conducted by career counsellors with MIT undergraduates.
+
+    1) Colleague: Appeared professional and team-oriented.
+    2) Engaged: Showed active interest and participation.
+    3) Excited: Demonstrated enthusiasm or energetic behavior.
+    4) EyeContact: Maintained consistent eye contact with the interviewer.
+    5) Smiled: Displayed frequent or appropriate smiling.
+    6) SpeakingRate: Measured how quickly or slowly the person spoke.
+    7) NoFillers: Used minimal filler words (“um,” “uh,” etc.).
+    8) Friendly: Conveyed warmth and approachability.
+    9) Paused: Exhibited controlled or purposeful pauses.
+    10) EngagingTone: Used a tone that kept the interviewer interested.
+    11) StructuredAnswers: Provided well-organized, coherent responses.
+    12) Calm: Remained composed under interview pressure.
+    13) NotStressed: Showed minimal anxiety or tension.
+    14) Focused: Stayed on topic and maintained concentration.
+    15) Authentic: Came across as genuine and sincere.
+    16) NotAwkward: Appeared comfortable and at ease.
+
+All metrics are on the 0-7 scale. These  lay the foundation for more complex representation of human behaviour through the granular linguistic model of a phenomenon (GLMP), where the  are first-order perception mappings (1PMs). 
+
+Your task is as follows: You will receive one JSON files as input which includes the measures catalogue results of a video evaluated. From the measures obtained, you will build the entire GLMP by constructing the different levels of granularity, where the 1 PMs must be strictly from the measures catalogue, as well as making the corresponding inferences associated with the aggregation functions. The GLMP must represent a specific behaviour related with affective computing.
+
+The constituent elements of the JSON are delineated as follows:
+    1) figure: Represents the phenomenon or concept being modeled.
+    2) inputs: In the case of first-order PMs, it is a numerical value defined in the domain.Otherwise, from second-order PMs, it is a list that contains child nodes or input elements contributing to the parent concept. These inputs are organized recursively to reflect the hierarchical nature of the GLMP. 
+    3) output: Specifies the resulting value for the figure, including:
+        a) value: A numerical output representing the computed result.
+        b) linguistic_expressions: Qualitative labels such as low, medium, and high that describe states of the phenomenon.
+        c) validity_degrees: Membership degrees for each linguistic expression, representing the degree to which the output fits each label.
+    3) aggregation_function: Describes how input elements are combined to produce the output. It includes:
+        a) type: Defines the method of aggregation, such as 'membership function' (only for 1 PMs), rules, Choquet Integral...
+        b) details: Provides additional information, such as the specific rules or formulas used.
+            I) source: Exclusive for first-order PMs. It indicates how the input was obtained (measure).
+            II) rules: It is a list of the specific rules and each rule is a string. The specific structure is IF input1[value_input1] AND/OR/NOT input2[value_input2] AND/OR/NOT input3[value_input3]  THEN consequent[consequent_value] 
+        c) universe: Defines the universe of discourse (range of values that the variable can take). For example, if it has the value [0, 10, 0.01], the range is 0 to 10 with increments of 0.01.
+        c) fuzzy_sets: Parameters that define membership functions for linguistic terms like low, medium, and high. Each fuzzy sets includes the next elements:
+            I) type: Indicates the type of membership function, which may be one of the following but is not limited to: dsigmf, gauss2mf, gaussmf, gbellmf, piecemf, pimf, psigmf, sigmf, smf, trapmf, trimf
+            II) fuzzy_set_params: Specifies the parameters required for the chosen membership function. These parameters are specific to each function and determine its shape. 
+    4) template: Contains a natural language template used for generating textual outputs based on the computed results.
+
+Considerations:
+    1) If the figure receives more than three entries, use a different aggregation method than rules.
+    2) The rule set must be fully defined.
+    3) All required values must be inferred.
+    4) You can define as many levels of granularity as you consider necessary. At least, three levels.
+    5) The 1 PMs must include the real input values.
+    6) From 2 PM onwards, each PM must have at least 2 input PMs.
+    7) The JSON must have the correct structure and must be validated.

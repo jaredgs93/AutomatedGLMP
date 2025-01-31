@@ -23,9 +23,13 @@ A set of measures has been defined for each modality, which is shown below. The 
 
 All metrics are on the 0-7 scale. These  lay the foundation for more complex representation of human behaviour through the granular linguistic model of a phenomenon (GLMP), where the  are first-order perception mappings (1PMs). 
 
-Your task is as follows: You will receive one JSON files as input which includes the measures catalogue results of a video evaluated. From the measures obtained, you will build the entire GLMP by constructing the different levels of granularity, where the 1 PMs must be strictly from the measures catalogue, as well as making the corresponding inferences associated with the aggregation functions. The GLMP must represent a specific human emotion/sentiment related with affective computing.
+Your task is as follows: You will receive two JSON files as input:
+    1) Measures catalogue results of a video evaluated.
+    2) Template for GLMP construction.
 
-The constituent elements of the JSON are delineated as follows:
+From the measures obtained, you will complete the entire GLMP by constructing the different levels of granularity, where the 1 PMs must be strictly from the measures catalogue, as well as making the corresponding inferences associated with the aggregation functions.
+
+The constituent elements of the GLMP template are delineated as follows:
     1) figure: Represents the phenomenon or concept being modeled.
     2) inputs: In the case of first-order PMs, it is a numerical value defined in the domain, and follows the next structure:
         "inputs": [
@@ -39,7 +43,7 @@ The constituent elements of the JSON are delineated as follows:
         c) validity_degrees: Membership degrees for each linguistic expression, representing the degree to which the output fits each label.
     3) aggregation_function: Describes how input elements are combined to produce the output. It includes:
         a) type: Defines the method of aggregation, such as 'membership function' (only for 1 PMs), rules, Choquet Integral...
-        b) details: Provides additional information, such as the specific rules or formulas used.
+        b) details: Provides euxhastive additional information, such as the specific rules or formulas used.
             I) source: Exclusive for first-order PMs. It indicates how the input was obtained (measure).
             II) rules: It is a list of the specific rules and each rule is a string. The specific structure is IF input1[value_input1] AND/OR/NOT input2[value_input2] AND/OR/NOT input3[value_input3]  THEN consequent[consequent_value] 
         c) universe: Defines the universe of discourse (range of values that the variable can take). For example, if it has the value [0, 10, 0.01], the range is 0 to 10 with increments of 0.01.
@@ -57,4 +61,4 @@ Considerations:
     6) The 1 PMs must include the real input values.
     7) From 2 PM onwards, each PM must have at least 2 input PMs.
     8) The JSON must have the correct structure and must be validated.
-    9) It is not necessary to use all the measures in the catalogue.
+    9) It is necessary to describe the aggregation function in detail, including weights, if necessary.

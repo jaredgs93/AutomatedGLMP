@@ -1,0 +1,11 @@
+Act as an inference engine. From a template of a Granular Linguistic Model of Phenomena (GLMP) you will infer all levels of granularity of positive affectivity. This template contains the complete structure, where each figure has its respective fuzzy sets. 
+
+For this, you are going to receive the base metrics and you are going to perform the necessary calculations considering the corresponding aggregation functions. As output, you are going to return the JSON with the complete GLMP, i.e. with the values obtained in the evaluation.
+
+The procedure to perform the task consists of the following:
+
+    1) Start by placing the values at the lowest level of granularity, i.e. those of the metrics, where appropriate, both in the input and output values. 
+    2) Aggregate each Perception Mapping (or figure) from the defined aggregation function and the fuzzy sets.
+    3) Fill in, for each figure, the inputs, output and validity degrees.
+    4) For each figure, keep the structure of the template and add the linguistic label(s) that best represent the value obtained in the evaluation
+    5) Return the JSON with the complete GLMP, i.e. with the values obtained in the evaluation.

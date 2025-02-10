@@ -1,0 +1,1122 @@
+```json
+{
+  "figure": "PositiveAffect",
+  "inputs": [
+    {
+      "figure": "InterpersonalSkill",
+      "inputs": [
+        {
+          "figure": "Professionalism",
+          "inputs": [
+            {
+              "figure": "Colleague",
+              "inputs": [
+                {
+                  "value": 5.3,
+                  "linguistic_expressions": ["medium", "high"],
+                  "validity_degrees": [0.4857, 0.5143]
+                }
+              ],
+              "output": {
+                "value": 5.3,
+                "linguistic_expressions": ["medium", "high"],
+                "validity_degrees": [0.4857, 0.5143]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Perceived as a colleague at a {linguistic_expression} level."
+            },
+            {
+              "figure": "NotAwkward",
+              "inputs": [
+                {
+                  "value": 5.5,
+                  "linguistic_expressions": ["medium", "high"],
+                  "validity_degrees": [0.4429, 0.5571]
+                }
+              ],
+              "output": {
+                "value": 5.5,
+                "linguistic_expressions": ["medium", "high"],
+                "validity_degrees": [0.4429, 0.5571]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Appears not awkward at a {linguistic_expression} level."
+            }
+          ],
+          "output": {
+            "value": 4.4,  // Example value after rule evaluation
+            "linguistic_expressions": ["medium"],
+            "validity_degrees": [1.0, 0.0, 0.0]
+          },
+          "aggregation_function": {
+            "type": "rules",
+            "details": {
+              "rules": [
+                "IF Colleague is low OR NotAwkward is low THEN Professionalism is low",
+                "IF Colleague is high AND NotAwkward is high THEN Professionalism is high",
+                "ELSE Professionalism is medium"
+              ],
+              "defuzzification": "centroid"
+            },
+            "universe": [0, 7, 0.01],
+            "fuzzy_sets": [
+              {
+                "name": "low",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 0, 3.5]
+              },
+              {
+                "name": "medium",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 3.5, 7]
+              },
+              {
+                "name": "high",
+                "type": "trimf",
+                "fuzzy_set_params": [3.5, 7, 7]
+              }
+            ]
+          },
+          "template": "Overall professionalism is {linguistic_expression}."
+        },
+        {
+          "figure": "ExpressedFriendliness",
+          "inputs": [
+            {
+              "figure": "Friendly",
+              "inputs": [
+                {
+                  "value": 5.3,
+                  "linguistic_expressions": ["medium", "high"],
+                  "validity_degrees": [0.4857, 0.5143]
+                }
+              ],
+              "output": {
+                "value": 5.3,
+                "linguistic_expressions": ["medium", "high"],
+                "validity_degrees": [0.4857, 0.5143]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Friendliness is {linguistic_expression}."
+            },
+            {
+              "figure": "Smiled",
+              "inputs": [
+                {
+                  "value": 3.6,
+                  "linguistic_expressions": ["low", "medium"],
+                  "validity_degrees": [0.4857, 0.5143]
+                }
+              ],
+              "output": {
+                "value": 3.6,
+                "linguistic_expressions": ["medium"],
+                "validity_degrees": [0.5143, 0.4857]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Smiling is {linguistic_expression}."
+            }
+          ],
+          "output": {
+            "value": 4.7,  // Example value after rule evaluation
+            "linguistic_expressions": ["medium"],
+            "validity_degrees": [1.0, 0.0, 0.0]
+          },
+          "aggregation_function": {
+            "type": "rules",
+            "details": {
+              "rules": [
+                "IF Friendly is low OR Smiled is low THEN ExpressedFriendliness is low",
+                "IF Friendly is high AND Smiled is high THEN ExpressedFriendliness is high",
+                "ELSE ExpressedFriendliness is medium"
+              ],
+              "defuzzification": "centroid"
+            },
+            "universe": [0, 7, 0.01],
+            "fuzzy_sets": [
+              {
+                "name": "low",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 0, 3.5]
+              },
+              {
+                "name": "medium",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 3.5, 7]
+              },
+              {
+                "name": "high",
+                "type": "trimf",
+                "fuzzy_set_params": [3.5, 7, 7]
+              }
+            ]
+          },
+          "template": "Overall expressed friendliness is {linguistic_expression}."
+        },
+        {
+          "figure": "VisualEngagement",
+          "inputs": [
+            {
+              "figure": "EyeContact",
+              "inputs": [
+                {
+                  "value": 5.9,
+                  "linguistic_expressions": ["high"],
+                  "validity_degrees": [0.0, 1.0]
+                }
+              ],
+              "output": {
+                "value": 5.9,
+                "linguistic_expressions": ["high"],
+                "validity_degrees": [0.0, 1.0]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Eye contact is at a {linguistic_expression} level."
+            },
+            {
+              "figure": "Engaged",
+              "inputs": [
+                {
+                  "value": 5.5,
+                  "linguistic_expressions": ["medium", "high"],
+                  "validity_degrees": [0.4429, 0.5571]
+                }
+              ],
+              "output": {
+                "value": 5.5,
+                "linguistic_expressions": ["medium", "high"],
+                "validity_degrees": [0.4429, 0.5571]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Overall engagement is {linguistic_expression}."
+            }
+          ],
+          "output": {
+            "value": 5.7,  // Example value after rule evaluation
+            "linguistic_expressions": ["high"],
+            "validity_degrees": [0.0, 0.0, 1.0]
+          },
+          "aggregation_function": {
+            "type": "rules",
+            "details": {
+              "rules": [
+                "IF EyeContact is low OR Engaged is low THEN VisualEngagement is low",
+                "IF EyeContact is high AND Engaged is high THEN VisualEngagement is high",
+                "ELSE VisualEngagement is medium"
+              ],
+              "defuzzification": "centroid"
+            },
+            "universe": [0, 7, 0.01],
+            "fuzzy_sets": [
+              {
+                "name": "low",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 0, 3.5]
+              },
+              {
+                "name": "medium",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 3.5, 7]
+              },
+              {
+                "name": "high",
+                "type": "trimf",
+                "fuzzy_set_params": [3.5, 7, 7]
+              }
+            ]
+          },
+          "template": "Overall visual engagement is {linguistic_expression}."
+        }
+      ],
+      "output": {
+        "value": 4.4,  // Example intermediate value after aggregation
+        "linguistic_expressions": ["medium"],
+        "validity_degrees": [1.0, 0.0, 0.0]
+      },
+      "aggregation_function": {
+        "type": "rules",
+        "details": {
+          "rules": [
+            "IF Professionalism is low OR ExpressedFriendliness is low OR VisualEngagement is low THEN InterpersonalSkill is low",
+            "IF Professionalism is high AND ExpressedFriendliness is high AND VisualEngagement is high THEN InterpersonalSkill is high",
+            "ELSE InterpersonalSkill is medium"
+          ],
+          "defuzzification": "centroid"
+        },
+        "universe": [0, 7, 0.01],
+        "fuzzy_sets": [
+          {
+            "name": "low",
+            "type": "trimf",
+            "fuzzy_set_params": [0, 0, 3.5]
+          },
+          {
+            "name": "medium",
+            "type": "trimf",
+            "fuzzy_set_params": [0, 3.5, 7]
+          },
+          {
+            "name": "high",
+            "type": "trimf",
+            "fuzzy_set_params": [3.5, 7, 7]
+          }
+        ]
+      },
+      "template": "Interpersonal skills are {linguistic_expression}."
+    },
+    {
+      "figure": "VocalPerformance",
+      "inputs": [
+        {
+          "figure": "VocalEnthusiasm",
+          "inputs": [
+            {
+              "figure": "Excited",
+              "inputs": [
+                {
+                  "value": 5.0,
+                  "linguistic_expressions": ["medium", "high"],
+                  "validity_degrees": [0.4857, 0.5143]
+                }
+              ],
+              "output": {
+                "value": 5.0,
+                "linguistic_expressions": ["medium", "high"],
+                "validity_degrees": [0.4857, 0.5143]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Excitement is {linguistic_expression}."
+            },
+            {
+              "figure": "EngagingTone",
+              "inputs": [
+                {
+                  "value": 5.1,
+                  "linguistic_expressions": ["medium", "high"],
+                  "validity_degrees": [0.4857, 0.5143]
+                }
+              ],
+              "output": {
+                "value": 5.1,
+                "linguistic_expressions": ["medium", "high"],
+                "validity_degrees": [0.4857, 0.5143]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Tone is {linguistic_expression} in engagement."
+            }
+          ],
+          "output": {
+            "value": 4.8,  // Example value after rule evaluation
+            "linguistic_expressions": ["medium"],
+            "validity_degrees": [1.0, 0.0, 0.0]
+          },
+          "aggregation_function": {
+            "type": "rules",
+            "details": {
+              "rules": [
+                "IF Excited is low OR EngagingTone is low THEN VocalEnthusiasm is low",
+                "IF Excited is high AND EngagingTone is high THEN VocalEnthusiasm is high",
+                "ELSE VocalEnthusiasm is medium"
+              ],
+              "defuzzification": "centroid"
+            },
+            "universe": [0, 7, 0.01],
+            "fuzzy_sets": [
+              {
+                "name": "low",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 0, 3.5]
+              },
+              {
+                "name": "medium",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 3.5, 7]
+              },
+              {
+                "name": "high",
+                "type": "trimf",
+                "fuzzy_set_params": [3.5, 7, 7]
+              }
+            ]
+          },
+          "template": "Vocal enthusiasm is {linguistic_expression}."
+        },
+        {
+          "figure": "Fluency",
+          "inputs": [
+            {
+              "figure": "SpeakingRate",
+              "inputs": [
+                {
+                  "value": 4.9,
+                  "linguistic_expressions": ["medium"],
+                  "validity_degrees": [0.0, 0.4857, 0.5143]
+                }
+              ],
+              "output": {
+                "value": 4.9,
+                "linguistic_expressions": ["medium"],
+                "validity_degrees": [0.0, 0.4857, 0.5143]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Speaking rate is {linguistic_expression}."
+            },
+            {
+              "figure": "NoFillers",
+              "inputs": [
+                {
+                  "value": 3.8,
+                  "linguistic_expressions": ["medium"],
+                  "validity_degrees": [0.4857, 0.5143, 0.0]
+                }
+              ],
+              "output": {
+                "value": 3.8,
+                "linguistic_expressions": ["medium"],
+                "validity_degrees": [0.4857, 0.5143, 0.0]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Use of filler words is {linguistic_expression} (lower is better)."
+            }
+          ],
+          "output": {
+            "value": 4.3,  // Example value after rule evaluation
+            "linguistic_expressions": ["medium"],
+            "validity_degrees": [1.0, 0.0, 0.0]
+          },
+          "aggregation_function": {
+            "type": "rules",
+            "details": {
+              "rules": [
+                "IF SpeakingRate is low OR NoFillers is low THEN Fluency is low",
+                "IF SpeakingRate is high AND NoFillers is high THEN Fluency is high",
+                "ELSE Fluency is medium"
+              ],
+              "defuzzification": "centroid"
+            },
+            "universe": [0, 7, 0.01],
+            "fuzzy_sets": [
+              {
+                "name": "low",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 0, 3.5]
+              },
+              {
+                "name": "medium",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 3.5, 7]
+              },
+              {
+                "name": "high",
+                "type": "trimf",
+                "fuzzy_set_params": [3.5, 7, 7]
+              }
+            ]
+          },
+          "template": "Fluency in speech is {linguistic_expression}."
+        },
+        {
+          "figure": "Pausing",
+          "inputs": [
+            {
+              "figure": "Paused",
+              "inputs": [
+                {
+                  "value": 5.8,
+                  "linguistic_expressions": ["high"],
+                  "validity_degrees": [0.0, 1.0]
+                }
+              ],
+              "output": {
+                "value": 5.8,
+                "linguistic_expressions": ["high"],
+                "validity_degrees": [0.0, 1.0]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Appropriate pauses are {linguistic_expression}."
+            },
+            {
+              "figure": "StructuredAnswers",
+              "inputs": [
+                {
+                  "value": 4.9,
+                  "linguistic_expressions": ["medium"],
+                  "validity_degrees": [0.0, 1.0, 0.0]
+                }
+              ],
+              "output": {
+                "value": 4.9,
+                "linguistic_expressions": ["medium"],
+                "validity_degrees": [0.0, 1.0, 0.0]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Answers are structured at a {linguistic_expression} level."
+            }
+          ],
+          "output": {
+            "value": 5.4,  // Example value after rule evaluation
+            "linguistic_expressions": ["medium"],
+            "validity_degrees": [1.0, 0.0, 0.0]
+          },
+          "aggregation_function": {
+            "type": "rules",
+            "details": {
+              "rules": [
+                "IF Paused is low OR StructuredAnswers is low THEN Pausing is low",
+                "IF Paused is high AND StructuredAnswers is high THEN Pausing is high",
+                "ELSE Pausing is medium"
+              ],
+              "defuzzification": "centroid"
+            },
+            "universe": [0, 7, 0.01],
+            "fuzzy_sets": [
+              {
+                "name": "low",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 0, 3.5]
+              },
+              {
+                "name": "medium",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 3.5, 7]
+              },
+              {
+                "name": "high",
+                "type": "trimf",
+                "fuzzy_set_params": [3.5, 7, 7]
+              }
+            ]
+          },
+          "template": "Pausing and structuring is {linguistic_expression}."
+        }
+      ],
+      "output": {
+        "value": 4.6,  // Example intermediate value after aggregation
+        "linguistic_expressions": ["medium"],
+        "validity_degrees": [1.0, 0.0, 0.0]
+      },
+      "aggregation_function": {
+        "type": "rules",
+        "details": {
+          "rules": [
+            "IF VocalEnthusiasm is low OR Fluency is low OR Pausing is low THEN VocalPerformance is low",
+            "IF VocalEnthusiasm is high AND Fluency is high AND Pausing is high THEN VocalPerformance is high",
+            "ELSE VocalPerformance is medium"
+          ],
+          "defuzzification": "centroid"
+        },
+        "universe": [0, 7, 0.01],
+        "fuzzy_sets": [
+          {
+            "name": "low",
+            "type": "trimf",
+            "fuzzy_set_params": [0, 0, 3.5]
+          },
+          {
+            "name": "medium",
+            "type": "trimf",
+            "fuzzy_set_params": [0, 3.5, 7]
+          },
+          {
+            "name": "high",
+            "type": "trimf",
+            "fuzzy_set_params": [3.5, 7, 7]
+          }
+        ]
+      },
+      "template": "Overall vocal performance is {linguistic_expression}."
+    },
+    {
+      "figure": "InnerState",
+      "inputs": [
+        {
+          "figure": "Composure",
+          "inputs": [
+            {
+              "figure": "Calm",
+              "inputs": [
+                {
+                  "value": 5.4,
+                  "linguistic_expressions": ["medium", "high"],
+                  "validity_degrees": [0.4857, 0.5143]
+                }
+              ],
+              "output": {
+                "value": 5.4,
+                "linguistic_expressions": ["medium", "high"],
+                "validity_degrees": [0.4857, 0.5143]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Calmness is {linguistic_expression}."
+            },
+            {
+              "figure": "NotStressed",
+              "inputs": [
+                {
+                  "value": 5.4,
+                  "linguistic_expressions": ["medium", "high"],
+                  "validity_degrees": [0.4857, 0.5143]
+                }
+              ],
+              "output": {
+                "value": 5.4,
+                "linguistic_expressions": ["medium", "high"],
+                "validity_degrees": [0.4857, 0.5143]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Low stress is observed at a {linguistic_expression} level."
+            }
+          ],
+          "output": {
+            "value": 5.4,
+            "linguistic_expressions": ["medium"],
+            "validity_degrees": [1.0, 0.0, 0.0]
+          },
+          "aggregation_function": {
+            "type": "rules",
+            "details": {
+              "rules": [
+                "IF Calm is low OR NotStressed is low THEN Composure is low",
+                "IF Calm is high AND NotStressed is high THEN Composure is high",
+                "ELSE Composure is medium"
+              ],
+              "defuzzification": "centroid"
+            },
+            "universe": [0, 7, 0.01],
+            "fuzzy_sets": [
+              {
+                "name": "low",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 0, 3.5]
+              },
+              {
+                "name": "medium",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 3.5, 7]
+              },
+              {
+                "name": "high",
+                "type": "trimf",
+                "fuzzy_set_params": [3.5, 7, 7]
+              }
+            ]
+          },
+          "template": "The participant's composure is {linguistic_expression}."
+        },
+        {
+          "figure": "FocusAuth",
+          "inputs": [
+            {
+              "figure": "Focused",
+              "inputs": [
+                {
+                  "value": 5.8,
+                  "linguistic_expressions": ["high"],
+                  "validity_degrees": [0.0, 1.0]
+                }
+              ],
+              "output": {
+                "value": 5.8,
+                "linguistic_expressions": ["high"],
+                "validity_degrees": [0.0, 1.0]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Focus is {linguistic_expression}."
+            },
+            {
+              "figure": "Authentic",
+              "inputs": [
+                {
+                  "value": 5.6,
+                  "linguistic_expressions": ["medium", "high"],
+                  "validity_degrees": [0.4857, 0.5143]
+                }
+              ],
+              "output": {
+                "value": 5.6,
+                "linguistic_expressions": ["medium", "high"],
+                "validity_degrees": [0.4857, 0.5143]
+              },
+              "aggregation_function": {
+                "type": "membership function",
+                "details": {
+                  "source": "Measure"
+                },
+                "universe": [0, 7, 0.01],
+                "fuzzy_sets": [
+                  {
+                    "name": "low",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 0, 3.5]
+                  },
+                  {
+                    "name": "medium",
+                    "type": "trimf",
+                    "fuzzy_set_params": [0, 3.5, 7]
+                  },
+                  {
+                    "name": "high",
+                    "type": "trimf",
+                    "fuzzy_set_params": [3.5, 7, 7]
+                  }
+                ]
+              },
+              "template": "Authenticity is {linguistic_expression}."
+            }
+          ],
+          "output": {
+            "value": 5.7,  // Example value after rule evaluation
+            "linguistic_expressions": ["high"],
+            "validity_degrees": [0.0, 1.0, 0.0]
+          },
+          "aggregation_function": {
+            "type": "rules",
+            "details": {
+              "rules": [
+                "IF Focused is low OR Authentic is low THEN FocusAuth is low",
+                "IF Focused is high AND Authentic is high THEN FocusAuth is high",
+                "ELSE FocusAuth is medium"
+              ],
+              "defuzzification": "centroid"
+            },
+            "universe": [0, 7, 0.01],
+            "fuzzy_sets": [
+              {
+                "name": "low",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 0, 3.5]
+              },
+              {
+                "name": "medium",
+                "type": "trimf",
+                "fuzzy_set_params": [0, 3.5, 7]
+              },
+              {
+                "name": "high",
+                "type": "trimf",
+                "fuzzy_set_params": [3.5, 7, 7]
+              }
+            ]
+          },
+          "template": "Focus and authenticity is {linguistic_expression}."
+        }
+      ],
+      "output": {
+        "value": 5.5,  // Example intermediate value after aggregation
+        "linguistic_expressions": ["medium", "high"],
+        "validity_degrees": [0.6667, 0.3333, 0.0]
+      },
+      "aggregation_function": {
+        "type": "rules",
+        "details": {
+          "rules": [
+            "IF Composure is low OR FocusAuth is low THEN InnerState is low",
+            "IF Composure is high AND FocusAuth is high THEN InnerState is high",
+            "ELSE InnerState is medium"
+          ],
+          "defuzzification": "centroid"
+        },
+        "universe": [0, 7, 0.01],
+        "fuzzy_sets": [
+          {
+            "name": "low",
+            "type": "trimf",
+            "fuzzy_set_params": [0, 0, 3.5]
+          },
+          {
+            "name": "medium",
+            "type": "trimf",
+            "fuzzy_set_params": [0, 3.5, 7]
+          },
+          {
+            "name": "high",
+            "type": "trimf",
+            "fuzzy_set_params": [3.5, 7, 7]
+          }
+        ]
+      },
+      "template": "Inner emotional state is {linguistic_expression}."
+    }
+  ],
+  "output": {
+    "value": 4.7,  // Example overall value after weighted average
+    "linguistic_expressions": ["medium"],
+    "validity_degrees": [1.0, 0.0, 0.0]
+  },
+  "aggregation_function": {
+    "type": "weighted_average",
+    "details": {
+      "weights": [0.3333, 0.3333, 0.3333],
+      "explanation": "InterpersonalSkill, VocalPerformance, and InnerState are equally weighted."
+    },
+    "universe": [0, 7, 0.01],
+    "fuzzy_sets": [
+      {
+        "name": "low",
+        "type": "trimf",
+        "fuzzy_set_params": [0, 0, 3.5]
+      },
+      {
+        "name": "medium",
+        "type": "trimf",
+        "fuzzy_set_params": [0, 3.5, 7]
+      },
+      {
+        "name": "high",
+        "type": "trimf",
+        "fuzzy_set_params": [3.5, 7, 7]
+      }
+    ]
+  },
+  "template": "The overall PositiveAffect is {linguistic_expression}."
+}
+```
+
+**Note:** The values provided in this JSON are illustrative examples based on the input metrics you've provided. In a real-world scenario, each `"value"` and corresponding `"linguistic_expressions"` would be calculated precisely using the defined fuzzy logic rules and membership functions. The `"validity_degrees"` represent the degree to which each linguistic expression is valid for the given value, and they should sum to 1 across the expressions for each figure.
+
+For accurate results, it's recommended to implement this model using a fuzzy logic library or tool that can handle the calculations programmatically.
